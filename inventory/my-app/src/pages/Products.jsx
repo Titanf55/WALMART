@@ -69,7 +69,7 @@ const Products = () => {
         <h3>PRODUCTS DASHBOARD</h3>
       </div>
 
-      <div className='main-cards'>
+      <div className='product-cards'>
         <div className='card green' onClick={() => handleCardClick('fresh')}>
           <div className='card-inner'>
             <h3>FRESH ITEMS</h3>

@@ -13,7 +13,7 @@
 }
 
 /* Force exactly 4 cards in a row on most laptops */
-.main-cards {
+.product-cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
