@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from './Assets/only-logo-removebg-preview.png'; 
 import 
 {BsCart3, BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, 
   BsListCheck, BsMenuButtonWideFill, BsFillGearFill}
@@ -9,7 +10,8 @@ function Sidebar({openSidebarToggle, OpenSidebar,onPageChange}) {
     <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive": ""}>
         <div className='sidebar-title'>
             <div className='sidebar-brand'>
-                <BsCart3  className='icon_header'/> MENU
+                {/*<BsCart3  className='icon_header'/> MENU*/}
+                <img src={logo} alt="App Logo" className='logo-img' /> MENU
             </div>
             <span className='icon close_icon' onClick={OpenSidebar}>X</span>
         </div>
