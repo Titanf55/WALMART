@@ -15,7 +15,9 @@ const Inventory = () => {
   const headers = products.length > 0 ? Object.keys(products[0]) : [];
 
   const filteredProducts = products.filter(product =>
-    product.Product_Name.toLowerCase().includes(searchTerm.toLowerCase())
+    String(product.Product_Name || '')
+      .toLowerCase()
+      .includes(String(searchTerm).toLowerCase())
   );
 
   return (
@@ -29,29 +31,29 @@ const Inventory = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
 
-      <div className="table-container">
-        <table className="inventory-table">
-          <thead>
-            <tr>
-              {headers.map((key, i) => (
-                <th key={i}>{key.replace(/_/g, ' ')}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {filteredProducts.map((item, idx) => (
-              <tr key={idx}>
+      {filteredProducts.length === 0 ? (
+        <p className="no-results">No products found.</p>
+      ) : (
+        <div className="table-container">
+          <table className="inventory-table">
+            <thead>
+              <tr>
                 {headers.map((key, i) => (
-                  <td key={i}>{item[key]}</td>
+                  <th key={i}>{key.replace(/_/g, ' ')}</th>
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      {filteredProducts.length === 0 && (
-        <p className="no-results">No products found.</p>
+            </thead>
+            <tbody>
+              {filteredProducts.map((item, idx) => (
+                <tr key={idx}>
+                  {headers.map((key, i) => (
+                    <td key={i}>{item[key]}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );
